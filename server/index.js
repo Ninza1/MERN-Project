@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const express = require('express');
 const cors = require('cors')
+const path = require("path")
 const app = express()
 
 app.use(cors())
@@ -31,8 +32,15 @@ const userSchema = new mongoose.Schema({
 })
 
 const userMain = mongoose.model('UserDetail', userSchema);
+// app.use(express.assets(path.resolve(__dirname,"build")))
+app.use(express.static(path.resolve(__dirname, "build")))
 
-app.get('/', async(req, res) => {
+app.get('/',(req, res)=>{
+    res.sendFile(path.join(__dirname, "./build/index.html"))
+})
+
+
+app.get('/data', async(req, res) => {
     const get = await userMain.find()
     res.send(get)
 })
