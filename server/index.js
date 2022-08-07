@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.json());
 
 
-mongoose.connect('mongodb+srv://newUser:yourname@cluster0.3dn96.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://newUser:yourpassword@cluster0.3dn96.mongodb.net/?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
